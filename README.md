@@ -36,5 +36,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 # 08_tiktokclone
+## In main repository
+- Run `npx create-next-app@latest ./ --ts`
+- Run `npm create sanity@latest -- --coupon javascriptmastery2022`
+- Gitignore all the node_modules files (and stuffs)
 
-npx create-next-app@latest ./ --ts
