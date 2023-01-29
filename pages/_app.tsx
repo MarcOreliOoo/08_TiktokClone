@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar';
 import { useState, useEffect }  from 'react';
 
 import '../styles/globals.css'
+import Home from '.';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	//Is server side rendering ?
@@ -21,9 +22,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 			<div className='flex gap-6 md:gap-20'>
 				<div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
 					<Sidebar />
-					<div className='mt-4 flex flex-col gap-10 overflow-auto h-[88vh] videos flex-1'>
-						<Component {...pageProps} />
-					</div>
+				</div>
+				<div className='mt-4 flex flex-col gap-10 overflow-auto h-[88vh] videos flex-1'>
+					<Component {...pageProps} />
 				</div>
 			</div>
 		</div>

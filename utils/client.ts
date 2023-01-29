@@ -1,9 +1,13 @@
 import sanityClient from '@sanity/client';
 
-export const client = sanityClient({
-	projectId: 'tp4ln3j8',
+const connectorInfo = {
+	projectId: '8421wzuo',
 	dataset: 'production',
-	apiVersion: '2022-03-10',
+	apiVersion: '2022-12-19',
 	useCdn: false,
 	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
-});
+};
+console.log(connectorInfo.token);
+
+export const client = sanityClient(connectorInfo);
+
