@@ -23,7 +23,8 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					{/* for profil pic on each post*/}
 					<div className='md:w-16 md:h-16 w-10 h-10'>
 						<Link href="/">
-							<>1h36:52
+							<>
+								<Image width={62} height={62} className="rounded-full" src={post.postedBy.image} alt="profile pic" layout="responsive" />
 							</>
 						</Link>
 					</div>
