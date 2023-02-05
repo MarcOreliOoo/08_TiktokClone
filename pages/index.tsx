@@ -10,8 +10,6 @@ interface IProps {
 //Path Intelissence
 const Home = ({ videos }: IProps) => {
 	
-	console.log('from index :'+videos);
-
 	return (
 		<div className='flex flex-col gap-10 videos h-full'>
 			{videos && videos.length ? (
