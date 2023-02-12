@@ -32,9 +32,9 @@ const Navbar = () => {
 			</div>
 			<div>
 				{userProfile? (
-					<div className='flex gap-5 md:gap-10'>
+					<div className='flex gap-6 md:gap-10'>
 						<Link href="/upload">
-							<button className='border-2 px-2 md:px-4 text-md font-semibold items-center flex gap-2'>
+							<button className='border-2 p-2 md:px-4 text-md font-semibold items-center flex gap-2'>
 								<IoMdAdd className='text-xl'/>{' '}
 								<span className='hidden md:block'>Upload</span>
 							</button>
@@ -46,7 +46,7 @@ const Navbar = () => {
 								</>
 							</Link>
 						)}
-						<button type="button" className='px-2' onClick={() => {
+						<button type="button" className='border-2 p-2 rounded-full cursor-pointer outline-none shadow-md' onClick={() => {
 								googleLogout();
 								removeUser();
 							}}>
