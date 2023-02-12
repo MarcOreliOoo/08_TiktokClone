@@ -15,7 +15,7 @@ interface IProps{
 const VideoCard: NextPage<IProps> = ({ post }) => {
 	const [isHover, setIsHover] = useState(false);
 	const [playing, setPlaying] = useState(false);
-	const [muted, setMuted] = useState(false);
+	const [isVideoMuted, setIsVideoMuted] = useState(false);
 	const videoRef = useRef<HTMLVideoElement>(null);
 
 	const onVideoPress = () => {
@@ -27,6 +27,12 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 			setPlaying(true);
 		}
 	}
+
+	useEffect(() => {
+		if(videoRef?.current){
+			videoRef.current.muted = isVideoMuted;
+		}
+	},[isVideoMuted]);
 
   	return (
 		<div className='flex flex-col border-p-2 border-gray-200 pb-6'>
@@ -63,7 +69,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					onMouseEnter={() => {setIsHover(true)}}
 					onMouseLeave={() => {setIsHover(false)}}
 				>
-					<Link href="/">
+					<Link href={`/detail/${post._id}`}>
 						<video
 							loop
 							ref={videoRef}
@@ -84,12 +90,12 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 									<BsFillPlayFill className='text-black text-2xl lg:text-4xl'/>
 								</button>
 							)}
-							{muted ? (
-								<button onClick={() => setMuted(false)}>
+							{isVideoMuted ? (
+								<button onClick={() => setIsVideoMuted(false)}>
 									<HiVolumeOff className='text-black text-2xl lg:text-4xl'/>
 								</button>
 							):(
-								<button onClick={() => setMuted(true)}>
+								<button onClick={() => setIsVideoMuted(true)}>
 									<HiVolumeUp className='text-black text-2xl lg:text-4xl'/>
 								</button>
 							)}
