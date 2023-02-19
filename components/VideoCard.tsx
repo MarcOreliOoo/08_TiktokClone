@@ -41,7 +41,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 				<div className='flex gap-3 cursor-pointer p-2 font-semibold rounded'>
 					{/* for profil pic on each post*/}
 					<div className='md:w-16 md:h-16 w-10 h-10'>
-						<Link href="/">
+						<Link href={`/profile/${post.postedBy._id}`}>
 							<>
 								<Image width={62} height={62} className="rounded-full" src={post.postedBy.image} alt="profile pic" layout="responsive" />
 							</>
@@ -49,7 +49,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 					</div>
 					{/* for profil name + verified status*/}
 					<div>
-						<Link href="/">
+						<Link href={`/profile/${post.postedBy._id}`}>
 							<div className='flex items-center gap-2'>
 								<p className='gap-2 flex md:text-md items-center font-bold text-primary'>
 									{post.postedBy.userName}{' '}<GoVerified className='text-blue-400 text-md' />
