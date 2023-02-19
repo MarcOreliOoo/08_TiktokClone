@@ -105,6 +105,6 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 			</div>
 		</div>
   	)
-}
+};
 
-export default VideoCard
+export default VideoCard;

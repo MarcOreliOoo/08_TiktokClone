@@ -67,7 +67,7 @@ const Detail = ({ postDetails }:IProps) => {
 
 			const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`,{
 				userId: userProfile._id,
-				comment
+				comment: comment.trim()
 			});
 
 			setPost({...post, comments: data.comments});

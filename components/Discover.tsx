@@ -35,4 +35,4 @@ export const Discover = () => {
 			</div>
 		</div>
 	)
-}
+};
