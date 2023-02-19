@@ -24,6 +24,8 @@ const Detail = ({ postDetails }:IProps) => {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const router = useRouter();
 	const { userProfile }:any = useAuthStore();
+	const [comment, setComment] = useState('');
+	const [isPostingComment, setIsPostingComment] = useState(false);
 
 	const onVideoClick = () => {
 		if(playing){
@@ -53,6 +55,24 @@ const Detail = ({ postDetails }:IProps) => {
 			//2- to spread the previous state of the object
 			//3- to select the property which we want to update
 			setPost({...post, likes: data.likes});
+		}
+	}
+
+	const addComment = async (e) => {
+		//e.preventDefault to avoid our website reload after posting a comment
+		e.preventDefault();
+		if(userProfile && comment){
+			//set to true becasuse the process of posting a comment has started
+			setIsPostingComment(true);
+
+			const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`,{
+				userId: userProfile._id,
+				comment
+			});
+
+			setPost({...post, comments: data.comments});
+			setComment('');
+			setIsPostingComment(false);
 		}
 	}
 
@@ -145,7 +165,11 @@ const Detail = ({ postDetails }:IProps) => {
 						)}
 					</div>
 					<Comments 
-					
+						comment={comment}
+						setComment={setComment}
+						addComment={addComment}
+						comments={post.comments}
+						isPostingComment={isPostingComment}
 					/>
 				</div>
 			</div>
